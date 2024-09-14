@@ -10,7 +10,9 @@
     </parent>
 
     <artifactId>cloud-iaas</artifactId>
+
     <packaging>pom</packaging>
+
     <modules>
         <module>auth-server</module>
         <module>gateway-server</module>

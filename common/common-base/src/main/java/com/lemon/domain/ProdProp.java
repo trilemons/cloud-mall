@@ -14,6 +14,9 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 商品属性
+ */
 @ApiModel(value="com-lemon-domain-ProdProp")
 @Data
 @Builder
