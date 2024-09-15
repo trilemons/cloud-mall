@@ -67,9 +67,9 @@ public class AuthFilter implements GlobalFilter, Ordered {
         String authorizationValue = request.getHeaders().getFirst(AuthConstants.AUTHORIZATION);
         if (StringUtils.hasText(authorizationValue)) {
             //获取没有前缀的token
-            String tokenValue = authorizationValue.replaceFirst(AuthConstants.BEARER, "");
+            String tokenValue = authorizationValue.replaceFirst(AuthConstants.BEARER, "").replaceFirst("^\\s+", "");
             //判断token是否有值且是否在redis中存在
-            if (StringUtils.hasText(tokenValue) && stringRedisTemplate.hasKey(AuthConstants.LOGIN_TOKEN_PREFIX + tokenValue)) {
+            if (StringUtils.hasText(tokenValue) && stringRedisTemplate.hasKey(AuthConstants.LOGIN_TOKEN_PREFIX+tokenValue)) {
                 //身份验证通过
                 return chain.filter(exchange);
             }

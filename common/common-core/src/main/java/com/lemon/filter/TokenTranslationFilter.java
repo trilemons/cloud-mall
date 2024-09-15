@@ -56,7 +56,7 @@ public class TokenTranslationFilter extends OncePerRequestFilter {
         // 判断是否有值
         if (StringUtils.hasText(authorizationValue)) {
             // 获取token
-            String token = authorizationValue.replaceFirst(AuthConstants.BEARER, "");
+            String token = authorizationValue.replaceFirst(AuthConstants.BEARER, "").replaceFirst("^\\s+", "");
             // 判断token是否有值
             if (StringUtils.hasText(token)) {
                 // 解决token续签的问题
