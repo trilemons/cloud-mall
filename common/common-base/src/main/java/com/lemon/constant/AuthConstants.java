@@ -31,5 +31,8 @@ public interface AuthConstants {
     //redis中的token有效时间
     Long TOKEN_TIME = 14400L;
 
+    //token剩余存活时间的阈值
+    Long TOKEN_EXPIRE_THRESHOLD_TIME = 60*60L;
+
 
 }
