@@ -41,8 +41,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
      *  1.新增管理员
      *  2.新增管理员与角色的关系
      *
-     * @param sysUser
-     * @return
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -60,7 +58,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
             // 获取管理员的角色id集合
             List<Long> roleIdList = sysUser.getRoleIdList();
             // 判断是否有值
-            if (CollectionUtil.isNotEmpty(roleIdList) && roleIdList.size() != 0) {
+            if (CollectionUtil.isNotEmpty(roleIdList) && !roleIdList.isEmpty()) {
                 // 创建管理员与角色关系的集合
                 List<SysUserRole> sysUserRoleList = new ArrayList<>();
                 // 循环遍历角色id集合
@@ -90,7 +88,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
                 .eq(SysUserRole::getUserId, id)
         );
         // 判断是否有值
-        if (CollectionUtil.isNotEmpty(sysUserRoleList) && sysUserRoleList.size() != 0) {
+        if (CollectionUtil.isNotEmpty(sysUserRoleList) && !sysUserRoleList.isEmpty()) {
             // 从管理员与角色关系集合中获取角色id集合
             List<Long> roldIdList = sysUserRoleList.stream().map(SysUserRole::getRoleId).collect(Collectors.toList());
             sysUser.setRoleIdList(roldIdList);
@@ -103,8 +101,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
      *  1.删除原有的管理员与角色关系记录
      *  2.添加新的管理员与角色关系记录
      *  3.修改管理员信息
-     * @param sysUser
-     * @return
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -119,7 +115,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         // 获取管理员的角色id集合
         List<Long> roleIdList = sysUser.getRoleIdList();
         // 判断是否有值
-        if (CollectionUtil.isNotEmpty(roleIdList) && roleIdList.size() != 0) {
+        if (CollectionUtil.isNotEmpty(roleIdList) && !roleIdList.isEmpty()) {
             // 创建管理员与角色关系的集合
             List<SysUserRole> sysUserRoleList = new ArrayList<>();
             // 循环遍历角色id集合
@@ -152,8 +148,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
      * 1.批量/单个删除管理员与角色的关系记录
      * 2.批量/单个删除管理员
      *
-     * @param userIds
-     * @return
      */
     @Override
     @Transactional(rollbackFor = Exception.class)

@@ -50,7 +50,7 @@ public class SysUserController {
      */
     @ApiOperation("多条件分页查询系统管理员")
     @GetMapping("page")
-    @PreAuthorize("hasAuthority('sys:user:page')")
+    @PreAuthorize("hasAuthority('sys:user:page')")//验证是否有用户分页的权限
     public Result<Page<SysUser>> loadSysUserPage(@RequestParam Long current,
                                                  @RequestParam Long size,
                                                  @RequestParam(required = false) String username) {

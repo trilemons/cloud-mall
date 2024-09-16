@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 //import com.lemon.constant.ManagerConstants;
+import com.lemon.constant.ManagerConstants;
 import com.lemon.domain.SysRole;
 import com.lemon.domain.SysRoleMenu;
 import com.lemon.mapper.SysRoleMapper;
@@ -24,7 +25,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@CacheConfig(cacheNames = "com.powernode.service.impl.SysRoleServiceImpl")
+@CacheConfig(cacheNames = "com.lemon.service.impl.SysRoleServiceImpl")
 public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> implements SysRoleService{
 
     @Autowired
@@ -43,7 +44,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
      * @return
      */
     @Override
-//    @Cacheable(key = ManagerConstants.SYS_ALL_ROLE_KEY)
+    @Cacheable(key = ManagerConstants.SYS_ALL_ROLE_KEY)
     public List<SysRole> querySysRoleList() {
         return sysRoleMapper.selectList(new LambdaQueryWrapper<SysRole>()
                 .orderByDesc(SysRole::getCreateTime)
@@ -58,7 +59,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
      * @return
      */
     @Override
-//    @CacheEvict(key = ManagerConstants.SYS_ALL_ROLE_KEY)
+    @CacheEvict(key = ManagerConstants.SYS_ALL_ROLE_KEY)
     @Transactional(rollbackFor = Exception.class)
     public Boolean saveSysRole(SysRole sysRole) {
         // 新增角色
@@ -110,7 +111,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     }
 
     @Override
-//    @CacheEvict(key = ManagerConstants.SYS_ALL_ROLE_KEY)
+    @CacheEvict(key = ManagerConstants.SYS_ALL_ROLE_KEY)
     @Transactional(rollbackFor = Exception.class)
     public Boolean modifySysRole(SysRole sysRole) {
         // 获取角色标识
@@ -144,7 +145,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     }
 
     @Override
-//    @CacheEvict(key = ManagerConstants.SYS_ALL_ROLE_KEY)
+    @CacheEvict(key = ManagerConstants.SYS_ALL_ROLE_KEY)
     @Transactional(rollbackFor = Exception.class)
     public Boolean removeSysRoleListByIds(List<Long> roleIdList) {
         // 批量或单个删除角色与权限关系集合
