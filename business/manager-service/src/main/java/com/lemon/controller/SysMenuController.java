@@ -1,4 +1,4 @@
-package com.lemon.cotroller;
+package com.lemon.controller;
 
 import com.lemon.domain.SysMenu;
 import com.lemon.model.Result;

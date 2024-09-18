@@ -75,7 +75,7 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
             // 创建角色与权限关系集合对象
             List<SysRoleMenu> sysRoleMenuList = new ArrayList<>();
             // 判断是否有值
-            if (CollectionUtil.isNotEmpty(menuIdList) && menuIdList.size() != 0) {
+            if (CollectionUtil.isNotEmpty(menuIdList) && !menuIdList.isEmpty()) {
                 // 循环遍历权限id集合
                 menuIdList.forEach(menuId -> {
                     // 创建角色与权限关系记录

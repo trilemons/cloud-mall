@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollectionUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 //import com.lemon.constant.ManagerConstants;
+import com.lemon.constant.ManagerConstants;
 import com.lemon.domain.SysMenu;
 import com.lemon.ex.handler.BusinessException;
 import com.lemon.mapper.SysMenuMapper;
@@ -70,19 +71,19 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     }
 
     @Override
-//    @Cacheable(key = ManagerConstants.SYS_ALL_MENU_KEY)
+    @Cacheable(key = ManagerConstants.SYS_ALL_MENU_KEY)
     public List<SysMenu> queryAllSysMenuList() {
         return sysMenuMapper.selectList(null);
     }
 
     @Override
-//    @CacheEvict(key = ManagerConstants.SYS_ALL_MENU_KEY)
+    @CacheEvict(key = ManagerConstants.SYS_ALL_MENU_KEY)
     public Boolean saveSysMenu(SysMenu sysMenu) {
         return sysMenuMapper.insert(sysMenu)>0;
     }
 
     @Override
-//    @CacheEvict(key = ManagerConstants.SYS_ALL_MENU_KEY)
+    @CacheEvict(key = ManagerConstants.SYS_ALL_MENU_KEY)
     public Boolean modifySysMenu(SysMenu sysMenu) {
         // 获取菜单类型
         Integer type = sysMenu.getType();
@@ -98,7 +99,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
      * @return
      */
     @Override
-//    @CacheEvict(key = ManagerConstants.SYS_ALL_MENU_KEY)
+    @CacheEvict(key = ManagerConstants.SYS_ALL_MENU_KEY)
     public Boolean removeSysMenuById(Long menuId) {
         // 根据菜单标识查询子菜单集合
         List<SysMenu> sysMenuList = sysMenuMapper.selectList(new LambdaQueryWrapper<SysMenu>()

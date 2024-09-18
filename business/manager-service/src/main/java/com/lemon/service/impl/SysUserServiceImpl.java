@@ -157,6 +157,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
                 .in(SysUserRole::getUserId,userIds)
         );
         // 批量/单个删除管理员
-        return sysUserMapper.deleteBatchIds(userIds)==userIds.size();
+        return sysUserMapper.deleteBatchIds(userIds)==userIds.size();//批量删除的个数应该和userIds的个数相等
     }
 }

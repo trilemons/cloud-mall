@@ -1,4 +1,4 @@
-package com.lemon.cotroller;
+package com.lemon.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
